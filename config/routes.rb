@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'prototypes/index'
   root 'prototypes#index'
-  resources :prototypes
+  resources :prototypes, only: [:index, :new, :create,  :show]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   

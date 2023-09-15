@@ -8,7 +8,7 @@ class PrototypesController < ApplicationController
   end
   
   def create
-    @prototype = Prototype.create(prototype_params)
+    @prototype = Prototype.new(prototype_params)
     if @prototype.save
       # 保存が成功した場合の処理
       redirect_to '/', notice: 'プロトタイプが正常に投稿されました。'
@@ -24,8 +24,11 @@ class PrototypesController < ApplicationController
     redirect_to root_path
   end
 
+  def show       
+    @prototype = Prototype.find(params[:id])
+  end
 
-
+  
 
 
   private
