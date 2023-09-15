@@ -31,6 +31,9 @@ class PrototypesController < ApplicationController
   def edit
     @prototype = Prototype.find(params[:id])
   end
+
+
+
   def update
     @prototype = Prototype.find(params[:id])
     if @prototype.update(prototype_params)
@@ -43,6 +46,19 @@ class PrototypesController < ApplicationController
   def edit
     @prototype = Prototype.find(params[:id])
   end
+
+
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    @prototype.destroy
+    redirect_to root_path
+  end
+
+
+
+
+
+
 
 
   private
