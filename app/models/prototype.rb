@@ -1,7 +1,8 @@
 class Prototype < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  
+  has_many :comments,dependent: :destroy
+
   # プロトタイプの名称は必須です
   validates :title, presence: true
 
