@@ -2,14 +2,15 @@ class PrototypesController < ApplicationController
   def index
     @prototypes = Prototype.all
   end
- 
+
   def new
     @prototype = Prototype.new
   end
-  
+
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
+      #tab test
       # 保存が成功した場合の処理
       redirect_to '/', notice: 'プロトタイプが正常に投稿されました。'
     else
@@ -18,21 +19,7 @@ class PrototypesController < ApplicationController
     end
   end
 
-  def destroy
-    
-    Prototype.destroy
-    redirect_to root_path
-  end
-
-  def show       
-    @prototype = Prototype.find(params[:id])
-  end
-
-  def edit
-    @prototype = Prototype.find(params[:id])
-  end
-
-
+  
 
   def update
     @prototype = Prototype.find(params[:id])
@@ -42,24 +29,25 @@ class PrototypesController < ApplicationController
       render :edit
     end
   end
-  
+
   def edit
     @prototype = Prototype.find(params[:id])
   end
 
 
   def destroy
+    Prototype.destroy
+    redirect_to root_path
     @prototype = Prototype.find(params[:id])
     @prototype.destroy
     redirect_to root_path
   end
 
-
-
-
-
-
-
+  def show
+    @prototype = Prototype.find(params[:id])
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
+  end
 
   private
 
