@@ -33,7 +33,7 @@ Things you may want to cover:
 | email              | string | NOT NULL,ユ二ーク制約 |
 | encrypted_password | string | NOT NULL|
 | name               | string | NOT NULL|
-| profile            | string | NOT NULL|
+| profile            | text   | NOT NULL|
 | occupation         | text   | NOT NULL|
 | position           | text   | NOT NULL|
 
