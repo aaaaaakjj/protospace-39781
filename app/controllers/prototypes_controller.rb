@@ -25,7 +25,7 @@ class PrototypesController < ApplicationController
   def update
     @prototype = Prototype.find(params[:id])
     if @prototype.update(prototype_params)
-      redirect_to root_path
+      redirect_to prototype_path
     else
       render :edit
     end
@@ -33,14 +33,16 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-
-      
+    
+    # 編集しようとしているプロトタイプの所有者が現在のユーザーでない場合
+    if @prototype.user != current_user
+      redirect_to root_path, alert: '他のユーザーのプロトタイプは編集できません。'
+    end
   end
 
 
   def destroy
-    Prototype.destroy
-    redirect_to root_path
+   
     @prototype = Prototype.find(params[:id])
     @prototype.destroy
     redirect_to root_path
